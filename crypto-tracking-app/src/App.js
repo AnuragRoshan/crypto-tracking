@@ -4,13 +4,25 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './Components/Header';
 import { Routes } from 'react-router-dom';
 import Coinpage from './Pages/Coinpage';
+import { makeStyles } from '@material-ui/core'
 
 function App() {
+
+  const useStyles = makeStyles(() => ({
+    App: {
+      backgroundColor: '#c0ced1',
+      color: '#071c34',
+      minHeight: '100vh'
+    },
+  }))
+
+  const classes = useStyles();
+
   return (
     <BrowserRouter>
 
-      <Header/>
-      <div>
+      <div className={classes.App}>
+        <Header />
         <Routes>
 
           < Route exact path="/" element={<Home />} />
