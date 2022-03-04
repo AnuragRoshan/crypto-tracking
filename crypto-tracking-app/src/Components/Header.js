@@ -12,7 +12,7 @@ export default function Header() {
     const darkTheme = createTheme({
         palette:{
             primary:{
-                main:"#123d6e"
+                main:"#ecf2f6"
             },
             // type:"light"
         }
@@ -24,7 +24,8 @@ export default function Header() {
             color:'#123d6e',
             fontFamily:'Montserrat',
             fontWeight:"bold",
-            cursor:"pointer"
+            cursor:"pointer",
+            
         }
     }))
     const classes=useStyles();
@@ -35,18 +36,18 @@ export default function Header() {
     return (
         // use create theme in the provided area
         <ThemeProvider theme={darkTheme} >  
-        <AppBar color='transparent' position='static'>
+        <AppBar color='transparent' position='static' >
             <Container>
                 <Toolbar>
                     <Typography className={classes.title} onClick={()=>navigate("/")}
                     variant='h6'
                     > 
-                         Crypto-App
+                         Cryptracker
                     </Typography>
                     <Select 
                     value={currency}
                     onChange={(e)=>setCurrency(e.target.value)}
-                    variant='outlined' style={{ width: 100, height: 40, marginRight: 15, color:"#123d6e",backgroundColor: '#c0ced1' }}>
+                    variant='outlined' style={{ width: 100, height: 40, marginRight: 15, color:"#123d6e",backgroundColor: '#ecf2f6' }}>
                         <MenuItem value={"USD"} >USD</MenuItem>
                         <MenuItem value={"INR"}>INR</MenuItem>
                         <MenuItem value={"TUR"}>TUR</MenuItem>
