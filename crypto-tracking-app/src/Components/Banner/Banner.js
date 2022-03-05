@@ -1,5 +1,5 @@
 import { Container, makeStyles, Typography } from "@material-ui/core";
-// import Carousel from "./Carousel";
+import Carousel from "./Carousel";
 
 const useStyles = makeStyles((theme) => ({
   banner: {
@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     height: "50%",
     display: "flex",
     alignItems: "center",
+    backgroundColor:"grey"
   },
 }));
 
@@ -41,7 +42,7 @@ function Banner() {
               fontFamily: "Montserrat",
             }}
           >
-            Cryptracker
+           Trending Today
           </Typography>
           <Typography
             variant="subtitle1"
@@ -53,10 +54,10 @@ function Banner() {
               fontFamily: "Montserrat",
             }}
           >
-            Get all the Info regarding your favorite Crypto Currency
+            Fastest Price Update and Best Crypto News On the Internet
           </Typography>
         </div>
-        {/* <Carousel /> */}
+        <Carousel />
       </Container>
     </div>
   );
@@ -65,39 +66,3 @@ function Banner() {
 export default Banner;
 
 
-// Fastest Update and Best Crypto News on The Internet
-// fontWeight:'medium',
-//           color:'black',
-// import React from 'react'
-// import { makeStyles, Container } from '@material-ui/core'
-
-
-
-// const useStyles=makeStyles(()=>({
-  
-  // banner:{
-    //     backgroundImage:"url(./bannerbg.jpg)",
-    
-    // },
-    // bannerContent:{
-      // height:400,
-      // display:"flex",
-      // flexDirection:"column",
-      // paddingTop:25,
-      // justifyContent:"space-around"
-// },
-
-// }))
-
-// function Banner() {
-//     const classes =useStyles();
-//   return (
-//       <div className='classes.banner'>
-//       <Container className='classes.bannerContent'>
-
-//     </Container>
-//     </div>
-//   )
-// }
-
-// export default Banner

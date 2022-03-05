@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import CryptoContext from './ContextAPi/CryptoContext';
+import "react-alice-carousel/lib/alice-carousel.css";
+
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
