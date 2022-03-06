@@ -40,7 +40,7 @@ const [trending, settrending] = useState([])
         const {data}=await axios.get(TrendingCoins(currency))
         settrending(data )
     };
-        console.log(trending);
+        // console.log(trending);
 
      useEffect(() => {
      

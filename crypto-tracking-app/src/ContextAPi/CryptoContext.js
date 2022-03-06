@@ -9,11 +9,11 @@ const CryptoContext = ({ children }) => {
   useEffect(() => {
     if (currency === "INR") setSymbol("₹");
     else if (currency === "USD") setSymbol("$");
-    else if (currency === "TUR") setSymbol("₺");
+    else if (currency === "EUR") setSymbol("€");
   }, [currency]);
 
   return (
-    <Crypto.Provider value={{ currency, setCurrency }}>
+    <Crypto.Provider value={{ currency, setCurrency ,symbol }}>
       {children}
     </Crypto.Provider>
   ); 

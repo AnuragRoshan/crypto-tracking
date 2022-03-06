@@ -48,9 +48,9 @@ export default function Header() {
                     value={currency}
                     onChange={(e)=>setCurrency(e.target.value)}
                     variant='outlined' style={{ width: 100, height: 40, marginRight: 15, color:"#123d6e",backgroundColor: '#ecf2f6' }}>
-                        <MenuItem value={"USD"} >USD</MenuItem>
                         <MenuItem value={"INR"}>INR</MenuItem>
-                        <MenuItem value={"TUR"}>TUR</MenuItem>
+                        <MenuItem value={"USD"} >USD</MenuItem>
+                        <MenuItem value={"EUR"}>EUR</MenuItem>
                     </Select>
                 </Toolbar>
             </Container>
