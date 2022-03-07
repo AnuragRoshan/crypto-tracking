@@ -5,6 +5,7 @@ import axios from "axios"
 import { TrendingCoins } from '../../Config/Api'
 import { useEffect , React } from 'react'
 import AliceCarousel from "react-alice-carousel";
+import { useNavigate } from "react-router-dom"
 
 
 const useStyles=makeStyles((theme)=>({
@@ -33,6 +34,8 @@ export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 const Carousel = () => {
+  const navigate = useNavigate();
+
 const classes=useStyles();
 const {currency,symbol}= CryptoState();
 const [trending, settrending] = useState([])
@@ -52,7 +55,7 @@ const [trending, settrending] = useState([])
       let profit = coin?.price_change_percentage_24h >= 0;
   
       return (
-        <Link className={classes.carouselItem} to={`/coins/${coin.id}`} style={{ textDecoration: 'none' }}>
+        <Link className={classes.carouselItem} onClick={() => navigate(`/coin/${coin.id}`)}  style={{ textDecoration: 'none' }}>
           <img
             src={coin?.image}
             alt={coin.name}

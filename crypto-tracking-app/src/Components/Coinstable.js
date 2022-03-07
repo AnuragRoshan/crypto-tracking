@@ -155,7 +155,7 @@ const Coinstable = () => {
                                                     key={row.name}
                                                 >
                                                     <TableCell
-                                                        onClick={() => navigate("/")}
+                                                        onClick={() => navigate(`/coin/${row.id}`)}
                                                         component="th"
                                                         scope="row"
                                                         style={{
