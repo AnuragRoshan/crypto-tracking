@@ -1,68 +1,164 @@
-import React, { useEffect } from 'react'
-import { HistoricalChart } from '../Config/Api'
-import { CryptoState } from '../ContextAPi/CryptoContext';
-import axios from "axios"
-import { useState } from 'react';
-import { createTheme, ThemeProvider } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import axios from "axios";
+import { useEffect, useState , React} from "react";
+import { HistoricalChart } from "../Config/Api";
+import { Line } from "react-chartjs-2";
+import { chartDays } from "../Config/Data";
+import SelectButton from "./SelectButton";
+import {
+  CircularProgress,
+  createTheme,
+  makeStyles,
+  ThemeProvider,
+} from "@material-ui/core";
+import { CryptoState } from "../ContextAPi/CryptoContext";
+import { Chart, registerables } from 'chart.js'
 
-const Coininfo = ({coin}) => {
-  const  [historicData, sethistoricData] = useState()
-  const [days, setdays] = useState(1)
-  const {currency}=CryptoState();
+Chart.register(...registerables)
+
+const CoinInfo = ({ coin }) => {
+  const [historicData, setHistoricData] = useState();
+  const [days, setDays] = useState(1);
+  const { currency } = CryptoState();
+  const [flag, setflag] = useState(false);
+
+
+  const data = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    datasets: [
+      {
+        label: "First dataset",
+        data: [33, 53, 85, 41, 44, 65],
+        fill: true,
+        backgroundColor: "red",
+        borderColor: "red"
+      },
+      {
+        label: "Second dataset",
+        data: [33, 25, 35, 51, 54, 76],
+        fill: false,
+        borderColor: "#123d6e"
+      }
+    ]
+  };
+  const useStyles = makeStyles((theme) => ({
+    container: {
+      width: "75%",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: 25,
+      padding: 40,
+      [theme.breakpoints.down("md")]: {
+        width: "100%",
+        marginTop: 0,
+        padding: 20,
+        paddingTop: 0,
+      },
+    },
+  }));
+
+  const classes = useStyles();
 
   const fetchHistoricData = async () => {
-    const { data } = await axios.get(HistoricalChart(coin.id,currency,days));
-
-    sethistoricData(data.prices);
+    const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
+    setflag(true);
+    setHistoricData(data.prices);
   };
 
-  useEffect(()=>{
+  // console.log(coin);
 
+  useEffect(() => {
     fetchHistoricData();
-  },[days,currency])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [days]);
 
   const darkTheme = createTheme({
     palette: {
-        primary: {
-            main: "#ecf2f6"
-        },
-        type: "light",
-        color: "black"
-    }
-})
-
-
-
-const useStyles=makeStyles((theme)=>({
-  container: {
-    width: "75%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 25,
-    padding: 40,
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      marginTop: 0,
-      padding: 20,
-      paddingTop: 0,
+      primary: {
+        main: "#fff",
+      },
+      type: "dark",
     },
-  },
+  });
 
-}))
-const classes=useStyles
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
-    {/* chart */}
-    
-    {/* buttons */}
+
+
+        {
+          !historicData ? (
+            <CircularProgress
+              style={{ color: "#123d6e" }}
+              size={250}
+              thickness={1}
+            />
+          ) : (
+
+            <>
+            {/* <Line data={data} /> */}
+            <Line
+              data={{
+                labels: historicData.map((coin) => {
+                  let date = new Date(coin[0]);
+                  let time =
+                    date.getHours() > 12
+                      ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                      : `${date.getHours()}:${date.getMinutes()} AM`;
+                  return days === 1 ? time : date.toLocaleDateString();
+                }),
+
+                datasets: [
+                  {
+                    data: historicData.map((coin) => coin[1]),
+                    label: `Price ( Past ${days} Days ) in ${currency}`,
+                    borderColor: "#123d6e",
+                  },
+                ],
+              }}
+              options={{
+                elements: {
+                  point: {
+                    radius: 1,
+                  },
+                },
+              }}
+
+              
+            />
+              <div
+              style={{
+                display: "flex",
+                marginTop: 20,
+                justifyContent: "space-around",
+                width: "100%",
+              }}
+            >
+              {chartDays.map((day) => (
+                <SelectButton
+                  key={day.value}
+                  onClick={() => {setDays(day.value);
+                    setflag(false);
+                  }}
+                  selected={day.value === days}
+                >
+                  {day.label}
+                </SelectButton>
+              ))}
+            </div>
+
+
+
+            </>
+          )
+
+
+        }
+
       </div>
-
     </ThemeProvider>
-  )
-}
+  );
+};
 
-export default Coininfo
+export default CoinInfo;

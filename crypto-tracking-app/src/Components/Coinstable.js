@@ -39,7 +39,7 @@ const Coinstable = () => {
         setloading(false)
     }
 
-    console.log(coins);
+    // console.log(coins);
     useEffect(() => {
 
         fetchCoins();
