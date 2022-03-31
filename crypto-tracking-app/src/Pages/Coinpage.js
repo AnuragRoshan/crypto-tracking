@@ -122,7 +122,7 @@ if(!coin)return <LinearProgress style={{backgroundColor:"black"}}/>
                   .toString()
                   .slice(0, -6)
               )}{" "}
-              M
+              
             </Typography>
             
             </span>

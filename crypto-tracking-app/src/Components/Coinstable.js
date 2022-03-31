@@ -145,6 +145,7 @@ const Coinstable = () => {
                                 </TableHead>
 
                                 <TableBody>
+                                    
                                     {handleSearch()
                                         .slice((page - 1) * 10, (page - 1) * 10 + 10)
                                         .map((row) => {
@@ -152,10 +153,11 @@ const Coinstable = () => {
                                             return (
                                                 <TableRow
                                                     className={classes.row}
+                                                    onClick={() => navigate(`/coin/${row.id}`)}
                                                     key={row.name}
                                                 >
                                                     <TableCell
-                                                        onClick={() => navigate(`/coin/${row.id}`)}
+                                                       
                                                         component="th"
                                                         scope="row"
                                                         style={{

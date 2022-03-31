@@ -37,13 +37,14 @@ export default function Header() {
         // use create theme in the provided area
         <ThemeProvider theme={darkTheme} >  
         <AppBar color='transparent' position='static' >
-            <Container>
+            {/* <Container> */}
                 <Toolbar>
                     <Typography className={classes.title} onClick={()=>navigate("/")}
                     variant='h6'
                     > 
                          Cryptracker
                     </Typography>
+                    
                     <Select 
                     value={currency}
                     onChange={(e)=>setCurrency(e.target.value)}
@@ -53,7 +54,7 @@ export default function Header() {
                         <MenuItem value={"EUR"}>EUR</MenuItem>
                     </Select>
                 </Toolbar>
-            </Container>
+            {/* </Container> */}
 
 
 
