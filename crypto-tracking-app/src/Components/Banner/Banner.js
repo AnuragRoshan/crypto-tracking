@@ -3,7 +3,7 @@ import Carousel from "./Carousel";
 
 const useStyles = makeStyles((theme) => ({
   banner: {
-    backgroundImage: "url(./bannerbg4.png)",
+    backgroundImage: "url(https://media.giphy.com/media/3ohs7HdhQA4ffttvrO/giphy.gif)",
   },
   bannerContent: {
     height: 400,

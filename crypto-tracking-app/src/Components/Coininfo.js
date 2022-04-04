@@ -42,13 +42,15 @@ const CoinInfo = ({ coin }) => {
   };
   const useStyles = makeStyles((theme) => ({
     container: {
-      width: "75%",
+      width: "100%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
       marginTop: 25,
-      padding: 40,
+      paddingLeft: 40,
+      paddingRight: 40,
+      paddingBottom: 40,
       [theme.breakpoints.down("md")]: {
         width: "100%",
         marginTop: 0,
@@ -97,6 +99,25 @@ const CoinInfo = ({ coin }) => {
           ) : (
 
             <>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                width: "100%",
+              }}
+            >
+              {chartDays.map((day) => (
+                <SelectButton
+                  key={day.value}
+                  onClick={() => {setDays(day.value);
+                    setflag(false);
+                  }}
+                  selected={day.value === days}
+                >
+                  {day.label}
+                </SelectButton>
+              ))}
+            </div>
             {/* <Line data={data} /> */}
             <Line
               data={{
@@ -127,26 +148,7 @@ const CoinInfo = ({ coin }) => {
 
               
             />
-              <div
-              style={{
-                display: "flex",
-                marginTop: 20,
-                justifyContent: "space-around",
-                width: "100%",
-              }}
-            >
-              {chartDays.map((day) => (
-                <SelectButton
-                  key={day.value}
-                  onClick={() => {setDays(day.value);
-                    setflag(false);
-                  }}
-                  selected={day.value === days}
-                >
-                  {day.label}
-                </SelectButton>
-              ))}
-            </div>
+              
 
 
 

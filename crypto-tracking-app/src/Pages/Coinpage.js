@@ -6,7 +6,6 @@ import { SingleCoin } from '../Config/Api';
 import { useState,useEffect } from 'react';
 import { LinearProgress, makeStyles ,Typography } from '@material-ui/core';
 import Coininfo from '../Components/Coininfo';
-import parse from 'html-react-parser';
 import { numberWithCommas } from '../Components/Banner/Carousel';
 
 
@@ -39,7 +38,7 @@ export default function Coinpage() {
       }
     },
     sidebar: {
-      width: "30%",
+      width: "100%",
       [theme.breakpoints.down("md")]: {
         width: "100%",
       },
@@ -49,9 +48,14 @@ export default function Coinpage() {
       marginTop: 25,
       borderRight: "2px solid grey",
     },
+    image:{
+      paddingLeft: 35,
+      paddingTop: 35,
+    },
     heading: {
       fontWeight: "bold",
       marginBottom: 20,
+      paddingLeft: 35,
       fontFamily: "Montserrat",
     },
     description: {
@@ -80,24 +84,28 @@ export default function Coinpage() {
       },
     },
   }))
-
+  
   const classes=useStyles();
   
-if(!coin)return <LinearProgress style={{backgroundColor:"black"}}/>
-
+  if(!coin)return <LinearProgress style={{backgroundColor:"black"}}/>
+  
   return (
-    <div  className={classes.container}>
-
-        <div className={classes.sidebar}>
-        <img
+    <>
+    <img  className={classes.image}
           src={coin?.image.large}
           alt={coin?.name}
-          height="200"
+          height="150"
           style={{ marginBottom: 20 }}
+          
         />
         <Typography variant="h3" className={classes.heading}>
           {coin?.name}
         </Typography>
+      <Coininfo  coin={coin} />
+    <div  className={classes.container}>
+
+        <div className={classes.sidebar}>
+        
 
         <Typography variant="subtitle1" className={classes.description}>
         {coin?.description.en.split(". ")[0]}.
@@ -150,8 +158,8 @@ if(!coin)return <LinearProgress style={{backgroundColor:"black"}}/>
 
 
         {/* chart */}
-      <Coininfo  coin={coin} />
 
     </div>
+    </>
   )
 }
