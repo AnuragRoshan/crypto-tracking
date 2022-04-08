@@ -68,7 +68,8 @@ export default function Coinpage() {
     },
     marketData: {
       alignSelf: "start",
-      padding: 25,
+      paddingTop: 25,
+      paddingBottom: 25,
       paddingTop: 10,
       width: "100%",
       [theme.breakpoints.down("md")]: {
@@ -107,9 +108,7 @@ export default function Coinpage() {
         <div className={classes.sidebar}>
         
 
-        <Typography variant="subtitle1" className={classes.description}>
-        {coin?.description.en.split(". ")[0]}.
-        </Typography>
+        
         <div className={classes.marketData}>
             <span style={{ display : "flex" }}>
             <Typography variant="h5" className={classes.heading}>
@@ -126,9 +125,7 @@ export default function Coinpage() {
             <Typography variant="h5" >
             {symbol}{" "}
               {numberWithCommas(
-                coin?.market_data.market_cap[currency.toLowerCase()]
-                  .toString()
-                  .slice(0, -6)
+                coin?.market_data.current_price[currency.toLowerCase()]
               )}{" "}
               
             </Typography>
@@ -150,6 +147,9 @@ export default function Coinpage() {
             </Typography>
             
             </span>
+            <Typography variant="subtitle1" className={classes.description}>
+        {coin?.description.en.split(". ")[0]}.{coin?.description.en.split(". ")[1]}.{coin?.description.en.split(". ")[2]}.{coin?.description.en.split(". ")[3]}.{coin?.description.en.split(". ")[4]}.{coin?.description.en.split(". ")[5]}.
+        </Typography>
         </div>
 
 

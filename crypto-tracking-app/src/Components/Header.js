@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, Container, createTheme, makeStyles, MenuItem, Select, ThemeProvider, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, Button, Container, createTheme, makeStyles, MenuItem, Select, ThemeProvider, Toolbar, Typography } from '@material-ui/core'
 import {useNavigate} from "react-router-dom"
 // import { CryptoState } from '../CryptoContext';
 import { CryptoState } from '../ContextAPi/CryptoContext';
@@ -53,6 +53,11 @@ export default function Header() {
                         <MenuItem value={"USD"} >USD</MenuItem>
                         <MenuItem value={"EUR"}>EUR</MenuItem>
                     </Select>
+                    <Button onClick={()=>navigate("/Pricing")}
+                    variant='outlined' style={{ width: 100, height: 40, marginRight: 15, color:"#123d6e",backgroundColor: '#ecf2f6' }}
+                    >
+                        Premium
+                    </Button>
                 </Toolbar>
             {/* </Container> */}
 
