@@ -4,7 +4,29 @@ import { makeStyles, Box, Typography, Button } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
 
-
+container:{
+    width: "auto",
+    height: "100%",
+    display: "flex",
+    paddingTop:"41px",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    
+    
+    
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      flexDirection: "column",
+      marginTop: 0,
+      padding: 200,
+      width: "auto",
+      height: "auto",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  
+},
   containerTop: {
     width: "auto",
     height: "auto",
@@ -13,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "center",
     paddingInline: 150,
-    paddingBlock:90,
+    paddingBlock:30,
     
     
     [theme.breakpoints.down("sm")]: {
@@ -60,6 +82,7 @@ const useStyles = makeStyles(theme => ({
     padding: 10,
     alignItems: "center",
     justifyContent: "center",
+    fontFamily:'Montserrat', 
   },
 
   Button:{
@@ -68,6 +91,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor:"#c0ced1",
     '&:hover': {
       backgroundColor: "white",
+      border:"1px solid #c0ced1",
     },
   }
 }))
@@ -75,9 +99,11 @@ function Pricing() {
   const classes = useStyles()
   return (
     <>
-  
+      <div className={classes.container}>
+       <Typography variant='h3' style={ {fontFamily:'Montserrat' , fontWeight:'800'} } >Pricing </Typography>
+      </div>
     <div className={classes.containerTop}>
-     
+      
       <div className={classes.containerInside}>
         <Typography variant='heading' className={classes.Subheading}>
           Students

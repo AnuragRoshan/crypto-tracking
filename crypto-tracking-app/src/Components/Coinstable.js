@@ -26,25 +26,19 @@ export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 const Coinstable = () => {
-    const [coins, setCoins] = useState([])
-    const [loading, setloading] = useState(false)
-    const { currency, symbol } = CryptoState();
+   
+    const { currency, symbol ,coins,loading ,fetchCoins} = CryptoState();
     const [page, setPage] = useState(1);
     const [search, setSearch] = useState("");
 
-    const fetchCoins = async () => {
-        setloading(true)
-        const { data } = await axios.get(CoinList(currency))
-        setCoins(data)
-        setloading(false)
-    }
+   
 
     // console.log(coins);
     useEffect(() => {
 
         fetchCoins();
-
-    }, [currency])
+      
+      }, [currency])
 
     const darkTheme = createTheme({
         palette: {

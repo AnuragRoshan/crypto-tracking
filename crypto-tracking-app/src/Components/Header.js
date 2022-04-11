@@ -1,6 +1,7 @@
 import React from 'react'
 import { AppBar, Button, Container, createTheme, makeStyles, MenuItem, Select, ThemeProvider, Toolbar, Typography } from '@material-ui/core'
 import {useNavigate} from "react-router-dom"
+import Authmodal from './Authentication/Authmodal';
 // import { CryptoState } from '../CryptoContext';
 import { CryptoState } from '../ContextAPi/CryptoContext';
 
@@ -58,7 +59,10 @@ export default function Header() {
                     >
                         Premium
                     </Button>
+
+                    <Authmodal/>
                 </Toolbar>
+
             {/* </Container> */}
 
 
