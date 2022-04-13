@@ -6,6 +6,7 @@ import { Routes } from 'react-router-dom';
 import Coinpage from './Pages/Coinpage';
 import { makeStyles } from '@material-ui/core'
 import Pricing from './Pages/Pricing';
+import Alert from './Components/Alert';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
         </Routes>
 
       </div>
+      <Alert/>
     </BrowserRouter>
   );
 }

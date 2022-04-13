@@ -13,6 +13,12 @@ const CryptoContext = ({ children }) => {
 
   const [user, setuser] = useState(null)
 
+  const [alert, setAlert] = useState({
+
+    open:false,
+    message:"",
+    type:"error",
+  })
   const fetchCoins = async () => {
     setloading(true)
     const { data } = await axios.get(CoinList(currency))
@@ -27,7 +33,7 @@ const CryptoContext = ({ children }) => {
   }, [currency]);
 
   return (
-    <Crypto.Provider value={{ currency, setCurrency ,symbol ,coins ,loading ,fetchCoins}}>
+    <Crypto.Provider value={{ currency, setCurrency ,symbol ,coins ,loading ,fetchCoins ,alert , setAlert}}>
       {children}
     </Crypto.Provider>  
   ); 
